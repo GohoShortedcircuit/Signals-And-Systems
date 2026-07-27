@@ -1,4 +1,4 @@
-
+1.1 : Generation of continious time sinusoidal signals
 
 f = 5; // Frequency in Hz
 A = 2; // Amplitude
