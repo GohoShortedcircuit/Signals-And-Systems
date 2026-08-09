@@ -1,0 +1,29 @@
+// Define parameters
+N = 50;                  // Number of samples
+f0 = 0.1;                // Frequency component 1
+f1 = 0.3;                // Frequency component 2
+n = 0:N-1;               // Sample index
+
+// Define the signal x[n]
+x = cos(2 * %pi * f0 * n) + sin(2 * %pi * f1 * n);
+
+// Compute DTFT
+omega = linspace(-%pi, %pi, 1000);   // Frequency range
+X = x * exp(-%i * n' * omega);         // DTFT calculation
+
+// Single window setup
+clf;
+
+// Plot 1: Magnitude of DTFT
+subplot(2,1,1);
+plot(omega / %pi, abs(X), 'b');
+xlabel('Normalized Frequency (\omega/\pi)');
+ylabel('|X(e^{j\omega})|');
+title('Magnitude of DTFT');
+
+// Plot 2: Phase of DTFT
+subplot(2,1,2);
+plot(omega / %pi, atan(imag(X), real(X)), 'b');
+xlabel('Normalized Frequency (\omega/\pi)');
+ylabel('Phase of X(e^{j\omega})');
+title('Phase of DTFT');
